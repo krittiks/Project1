@@ -49,13 +49,13 @@ namespace InternshipRT.Controllers
         [HttpDelete("delete/{id}")]
         public IActionResult Del([FromRoute] int? id)
         {
-            var test = _dbcntxt.Customers.FirstOrDefault(i => i.CustId == id);
+            var cust = _dbcntxt.Customers.FirstOrDefault(i => i.CustId == id);
             
-            if (test != null)
+            if (cust != null)
             {
-                _dbcntxt.Customers.Remove(test);
+                _dbcntxt.Customers.Remove(cust);
                 _dbcntxt.SaveChanges();
-                return Ok(test + "Deleted successfully");
+                return Ok(cust + "Deleted successfully");
             }
             else
             {
